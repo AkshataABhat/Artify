@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    	
+	{% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Web Based Image Processing Pipeline</title>
+    {% endif %}
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+				<h2> Pipeline Parameters </h2>
+				<form id="form" action="{{ url_for('handle_data') }}" method="post">
+				  <div class="form-group">
+					<label for="crop_params">Crop Parameters (x, y, dx, dy)</label>
+					<input type="text" class="form-control" id="crop_params" placeholder="Crop Parameters (x, y, dx, dy)">
+				  </div>
+				  <div class="form-group">
+					<label for="bin_params">Binarization Parameters (r, g, b, k)</label>
+					<input type="text" class="form-control" id="bin_params" placeholder="Binarization Parameters (r, g, b, k)">
+				  </div>
+				  <button type="submit" class="btn btn-primary">Update Pipeline</button>
+				  <button type="button" class="btn btn-primary" id="detect_faces_btn">Detect Faces</button>
+				</form>
+			</div>
+			<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+			  <img id="st" src="{{ url_for('stream_feed') }}">
+			  <!--<img id="st" src="https://via.placeholder.com/400">-->
+			</div>
+	  </div>
+	</div>
+   {% block content %}{% endblock %}
+   
+   <script>
+	$(document).on('submit', '#form', function(e) {
+		e.preventDefault();
+		
+		$('#st').attr('src', "https://vuejsexamples.com/content/images/2017/11/Customize-and-lightweight-Spinner-Component-for-vue.gif");
+		
+		$.ajax({
+			type: 'POST',
+			url: $('#form').attr('action'),
+			headers: {
+				'Content-Type':'application/json'
+			},
+			data: JSON.stringify({
+				"crop_params": $('#crop_params').val(),
+				"bin_params": $('#bin_params').val(),
+			}),
+			error: function(err){
+				console.log('ERR');
+				console.log(err);
+			},
+			success: function (response) {
+				console.log('SUCCESS');
+				$('#st').attr('src', "{{ url_for('pipeline_feed') }}");
+			},
+			complete: function(){
+				console.log('COMPLETE');
+			},
+		});
+			
+	});
+	
+	$('#detect_faces_btn').on('click', function(e) {
+		e.preventDefault();
+	
+		$('#st').attr('src', "https://vuejsexamples.com/content/images/2017/11/Customize-and-lightweight-Spinner-Component-for-vue.gif");
+		
+		setTimeout(function(){
+			$('#st').attr('src', "{{ url_for('faces_feed') }}");
+		},1000);
+		
+	});
+   </script>
+</body>
+</html>
