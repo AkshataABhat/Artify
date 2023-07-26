@@ -6,8 +6,7 @@
 
 Artify is a versatile image editing tool that empowers users to enhance and modify their images effortlessly. With a user-friendly interface, Artify offers a range of editing options, including adjusting brightness, saturation, and inversion, as well as applying grayscale effects. Moreover, users can explore creative possibilities by adding custom text to images. For advanced users, Artify provides features like rotating and flipping images. Additionally, the text-based image editor allows users to input specific commands like "grayscale" for converting to grayscale or "detect edges" for edge detection. Artify caters to both novice and experienced users, making image editing a seamless and enjoyable experience.
 
-## Github link to Artify(Part 2) - Text based image editing website
-
+### Github link to Artify(Part 2) - Text based image editing website
 [Artify Part 2](https://github.com/AkshataABhat/Artify2)
 
 
