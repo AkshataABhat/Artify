@@ -187,4 +187,4 @@ def render_template_file(template_name):
 if __name__ == "__main__":
     create_table()  # Call the function to create the table before running the app
 
-    app.run(debug=True)
+    app.run(debug=False,host='0.0.0.0')
