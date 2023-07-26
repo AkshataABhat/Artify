@@ -29,14 +29,14 @@ To run this project locally
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://akshatabhat.vercel.app/)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/akshata-bhat-342a261bb/)
 
+## Developer
 
+- [@AkshataABhat](https://github.com/AkshataABhat/)
 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
 
-## Developer
 
-- [@AkshataABhat](https://github.com/AkshataABhat/)
 
