@@ -1,84 +1,312 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+    <style>
+        /* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.image-container {
+  max-width: 300px;
+  max-height: 335px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.container.disable .editor-panel,
+.container.disable .controls .reset-filter,
+.container.disable .controls .save-img{
+  opacity: 0.5;
+  
+  pointer-events: none;
+}
+.container h2{
+  margin-top: -8px;
+  font-size: 22px;
+  font-weight: 500;
+}
+.container .wrapper{
+  display: flex;
+  margin: 20px 0;
+  min-height: 335px;
+  align-items: flex-start; /* Align images to the top */
+
+}
+.wrapper .editor-panel{
+  padding: 15px 20px;
+  width: 280px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.editor-panel .title{
+  display: block;
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #fff;
+}
+.editor-panel .options, .controls{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.editor-panel button{
+  outline: none;
+  height: 40px;
+  font-size: 14px;
+  color: #062c4e;
+  background: #fff;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  border: 1px solid #aaa;
+}
+.editor-panel .filter button{
+  width: calc(100% / 2 - 4px);
+}
+.editor-panel button:hover{
+  background: #f5f5f5;
+}
+.filter button.active{
+  color: #ffff;
+  border-color: #530529;
+  background: #530529;
+}
+.filter .slider{
+  margin-top: 12px;
+}
+.filter .slider .filter-info{
+  display: flex;
+  color: #fff;
+  font-size: 14px;
+  justify-content: space-between;
+}
+.filter .slider input{
+  width: 100%;
+  height: 5px;
+  accent-color: #530529;
+}
+.editor-panel .rotate{
+  margin-top: 17px;
+}
+
+
+.editor-panel .rotate button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% / 4 - 3px);
+}
+.rotate .options button:nth-child(3),
+.rotate .options button:nth-child(4){
+  font-size: 18px;
+}
+.rotate .options button:active{
+  color: #fff;
+  background: #530529;
+  border-color: #530529;
+}
+.wrapper .preview-img{
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+  margin-left: 20px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.preview-img img{
+  max-width: 300px;
+  max-height: 335px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+
+.original-img{
+  max-width: 300px;
+  max-height: 335px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.controls button{
+  padding: 11px 20px;
+  font-size: 14px;
+  border-radius: 3px;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+.controls .reset-filter{
+  color: #fff;
+  border: 1px solid #fff;
+}
+.controls .reset-filter:hover{
+  color: #530529;
+  background: #fff;
+}
+.controls .choose-img{
+  background: #6C757D;
+  border: 1px solid #6C757D;
+}
+.controls .save-img{
+  margin-left: 5px;
+  background: #5372F0;
+  border: 1px solid #5372F0;
+}
+
+.container {
+  width: 500px;
+  height: 500px;
+  background: rgba(41, 1, 51, 0.5); /* Using rgba to set transparency */
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+@media screen and (max-width: 1000px) {
+ 
+  .container .wrapper{
+    flex-wrap: wrap-reverse;
+  }
+  .wrapper .editor-panel{
+    width: 100%;
+  }
+  .wrapper .preview-img{
+    width: 100%;
+    margin: 0 0 15px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .controls button{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .controls .row{
+    width: 100%;
+  }
+  .controls .row .save-img{
+    margin-left: 0px;
+  }
+}
+
+
+    </style>
+
 <head>
-    <meta charset="UTF-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    	
-	{% if title %}
-        <title>{{ title }}</title>
-    {% else %}
-        <title>Web Based Image Processing Pipeline</title>
-    {% endif %}
+    <meta charset="utf-8">
+    <title>Artify</title>
+    <link rel="icon" href="static\image\icon.png"type="image/png">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
 </head>
+
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-				<h2> Pipeline Parameters </h2>
-				<form id="form" action="{{ url_for('handle_data') }}" method="post">
-				  <div class="form-group">
-					<label for="crop_params">Crop Parameters (x, y, dx, dy)</label>
-					<input type="text" class="form-control" id="crop_params" placeholder="Crop Parameters (x, y, dx, dy)">
-				  </div>
-				  <div class="form-group">
-					<label for="bin_params">Binarization Parameters (r, g, b, k)</label>
-					<input type="text" class="form-control" id="bin_params" placeholder="Binarization Parameters (r, g, b, k)">
-				  </div>
-				  <button type="submit" class="btn btn-primary">Update Pipeline</button>
-				  <button type="button" class="btn btn-primary" id="detect_faces_btn">Detect Faces</button>
-				</form>
-			</div>
-			<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-			  <img id="st" src="{{ url_for('stream_feed') }}">
-			  <!--<img id="st" src="https://via.placeholder.com/400">-->
-			</div>
-	  </div>
-	</div>
-   {% block content %}{% endblock %}
-   
-   <script>
-	$(document).on('submit', '#form', function(e) {
-		e.preventDefault();
-		
-		$('#st').attr('src', "https://vuejsexamples.com/content/images/2017/11/Customize-and-lightweight-Spinner-Component-for-vue.gif");
-		
-		$.ajax({
-			type: 'POST',
-			url: $('#form').attr('action'),
-			headers: {
-				'Content-Type':'application/json'
-			},
-			data: JSON.stringify({
-				"crop_params": $('#crop_params').val(),
-				"bin_params": $('#bin_params').val(),
-			}),
-			error: function(err){
-				console.log('ERR');
-				console.log(err);
-			},
-			success: function (response) {
-				console.log('SUCCESS');
-				$('#st').attr('src', "{{ url_for('pipeline_feed') }}");
-			},
-			complete: function(){
-				console.log('COMPLETE');
-			},
-		});
-			
-	});
-	
-	$('#detect_faces_btn').on('click', function(e) {
-		e.preventDefault();
-	
-		$('#st').attr('src', "https://vuejsexamples.com/content/images/2017/11/Customize-and-lightweight-Spinner-Component-for-vue.gif");
-		
-		setTimeout(function(){
-			$('#st').attr('src', "{{ url_for('faces_feed') }}");
-		},1000);
-		
-	});
-   </script>
+  <style>
+    body{
+  display: flex;
+  padding: 10px;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url('static/image/endless-constellation.svg');
+
+
+
+
+}
+  </style>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" >Artify</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li ><a href="about.html">Home</a></li>
+                <li class="active"><a href="index.html">Image Editor</a></li>
+                <li><a href="#">Page 2</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+     
+    <div class="container disable">
+        <div class="wrapper">
+            <div class="editor-panel">
+                <div class="filter">
+                    <label class="title">Filters</label>
+                    <div class="options">
+                        <button id="brightness" class="active">Brightness</button>
+                        <button id="saturation">Saturation</button>
+                        <button id="inversion">Inversion</button>
+                        <button id="grayscale">Grayscale</button>
+                        
+                      
+
+
+                    </div>
+                    <div class="slider">
+                        <div class="filter-info">
+                            <p class="name">Brightness</p>
+                            <p class="value">100%</p>
+                        </div>
+                        <input type="range" value="0" min="0" max="100">
+                    </div>
+                </div>
+                <div class="rotate">
+                    <label class="title">Rotate & Flip</label>
+                    <div class="options">
+                        <button id="left"><i class="fa-solid fa-rotate-left"></i></button>
+                        <button id="right"><i class="fa-solid fa-rotate-right"></i></button>
+                        <button id="horizontal"><i class='bx bx-reflect-vertical'></i></button>
+                        <button id="vertical"><i class='bx bx-reflect-horizontal' ></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="preview-img">
+                
+                <img src="/static/image/image-placeholder.svg" alt="preview-img" class="image-container">
+                
+            </div>
+            <div class="original-img">
+                <img src="/static/image/image-placeholder.svg" alt="original-img" class="image-container">
+            </div>
+            
+        </div>
+        <div class="controls">
+            <button class="reset-filter">Reset Filters</button>
+            <div class="row">
+              <input type="file" class="file-input" accept="image/*" hidden>
+              <button class="choose-img">Choose Image</button>
+              <button class="save-img">Save Image</button>
+          </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+    
+
 </body>
+
 </html>
