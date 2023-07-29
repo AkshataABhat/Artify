@@ -36,6 +36,9 @@ To run this project locally
 1. Frontend: HTML, CSS, JavaScript
 2. Backend: Flask 
 
+### Challenges Faced:
+1. I did not face any major hurdles during this assignment. However, there is a small bug while uploading images, that I will resolve before deployment of the next version.
+
 ### What's next for Artify?
 1. Minor bug fixes
 2. Integration with image generative tools like Stable Diffusion or DALL-E
@@ -50,7 +53,9 @@ To run this project locally
 if (youEnjoyed) {
     starThisRepository();
 }
-
+else if(youWantToContribute){
+    createAnIssue();
+}
 ```
 
 ## Developer
