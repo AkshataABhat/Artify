@@ -25,6 +25,7 @@ Artify is a versatile image editing tool that empowers users to enhance and modi
 5. The website displays original image before editing.
 6. User Interface of Artify is simple and intuitive, allowing for a seamless and effortless image-editing experience.
 7. As a bonus, the website also features 'Text Based Image Editing', where users can enter the name of the filter, eg: grayscale, invert, insert text and insert text.
+8. Images are not stored anywhere. Hence privacy of users is maintained.
 
 ## Deployment
 
@@ -43,8 +44,10 @@ To run this project locally
 4. Go to http://127.0.0.1:5000/templates/about.html to view the website.
 
 ### Tools and Technologies used:
-1. Frontend: HTML, CSS, JavaScript
-2. Backend: Flask 
+1. Frontend: HTML, CSS, JavaScript ( for the entire website structure, design and handing of interaction between frontend and backend )
+2. Backend: Flask ( for the image processing functions )
+3. GitHub pages and pythonanywhere ( for deployment )
+4. Git ( for version control )
 
 ### Challenges Faced:
 1. I did not face any major hurdles during this assignment. However, there is a small bug while uploading images, that I will resolve before deployment of the next version.
