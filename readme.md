@@ -1,6 +1,11 @@
 
 ## Deployed Link to Artify
 [Artify Image Editing Tool](https://akshataabhat.github.io/Artify/templates/about.html#)
+
+
+
+
+
 [Artify Demo](https://www.youtube.com/watch?v=999YG90oYrA)
 
 # Artify - Image Editing Software
