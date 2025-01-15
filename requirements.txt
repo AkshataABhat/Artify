@@ -279,7 +279,7 @@ tzlocal==4.2
 urllib3==1.26.9
 uvicorn==0.17.6
 validators==0.20.0
-virtualenv==20.17.1
+virtualenv==20.26.6
 virtualenv-clone==0.5.7
 watchdog==2.3.1
 watchgod==0.8.2
